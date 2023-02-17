@@ -5,7 +5,7 @@
  * and the in uppercase, follow by a new line
  * Return: o
  */
-?.int main(void)
+int main(void)
 {
 	char c = 'a';
 	
