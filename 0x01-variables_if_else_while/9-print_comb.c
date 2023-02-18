@@ -8,16 +8,15 @@
  */
 int main(void)
 {
-	char ch;
+	int c = 0;
 
-	for (ch = '0'; ch <= '9'; ch++)
+	while (c < 10)
 	{
-		putchar(ch);
+		putchar(48 +c);
+		if (c != 9)
+		{
+			putchar(',');
+			putchar(' ')
+		}
+		c++;
 	}
-	for (ch = 'a'; ch <= 'f'; ch++)
-	{
-		putchar(ch);
-	}
-	putchar(ch);
-	return (0);
-}
