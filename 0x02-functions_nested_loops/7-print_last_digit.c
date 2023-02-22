@@ -14,5 +14,5 @@ if (ld < 0)
 
 _putchar(ld + '0');
 
-return (0);
+return (ld);
 }
