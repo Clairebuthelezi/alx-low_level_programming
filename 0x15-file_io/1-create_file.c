@@ -1,22 +1,28 @@
-#include "main.h"
-
+#define _POSIX_SOURCE
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#undef _POSIX_SOURCE
+#include <stdio.h>
 /**
- * print_binary - prints the binary representation
- * of a number.
- * @n: unsigned long int.
- *
- * Return: no return.
+ * create_file - Creates a file.
+ * @filename: A pointer to the name of the file to create.
+ * @text_content: A pointer to a string to write to the file.
+ * Return: fd
  */
-void print_binary(unsigned long int n)
+int create_file(const char *filename, char *text_content)
 {
-	if (n >> 0)
-	{
-		if (n >> 1)
-			print_binary(n >> 1);
-		_putchar((n & 1) + '0');
-	}
+	char fn[] = "creat.file", text[] = "This is a test";
+	int fd;
+
+	if ((fd = creat(fn, S_IRUSR | S_IWUSR)) < 0)
+		perror("creat() error");
 	else
 	{
-		_putchar '0'
+		write(fd, text, strlen(text));
+		close(fd);
+		unlink(fn);
 	}
+	return (fd);
 }
