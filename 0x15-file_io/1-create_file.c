@@ -8,7 +8,7 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fd, fn ,len
+	int fd, fn, len
 		len = 0;
 
 	if (filename == NULL)
@@ -20,7 +20,7 @@ int create_file(const char *filename, char *text_content)
 			len++;
 	}
 
-	fd = create(filename, O_CREATE | O_RDWR | O_TRUNC, 0600);
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
 	fn = write(fd, text_content, len);
 
 	close(fd);
