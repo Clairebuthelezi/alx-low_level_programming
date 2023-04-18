@@ -5,6 +5,9 @@
 #include <unistd.h>
 #undef _POSIX_SOURCE
 #include <stdio.h>
+#include "main.h"
+#include <string.h>
+
 /**
  * create_file - Creates a file.
  * @filename: A pointer to the name of the file to create.
@@ -16,8 +19,15 @@ int create_file(const char *filename, char *text_content)
 	char fn[] = "creat.file", text[] = "This is a test";
 	int fd;
 
-	if ((fd = creat(fn, S_IRUSR | S_IWUSR)) < 0)
-		perror("creat() error");
+	if (filename == NULL)
+		return (-1);
+
+	if (text_content != NULL)
+	{
+		for ((fd = creat(fn, S_IRUSR | S_IWUSR)) < 0)
+			perror("creat() error");
+	}
+
 	else
 	{
 		write(fd, text, strlen(text));
