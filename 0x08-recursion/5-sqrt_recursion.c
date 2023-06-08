@@ -22,6 +22,8 @@ int _sqrt_recursion(int n)
 			return (mid);
 		else if (square < n)
 			start = mid + 1;
+		else
+			end = mid - 1;
 	}
 	return (-1);
 }
