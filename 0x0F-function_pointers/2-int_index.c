@@ -11,36 +11,15 @@
 
 int int_index(int *array, int size, int (*cmp)(int))
 {
-	if (size <= 0)
+	int i;
+
+	if (array == NULL || size <= 0 || cmp == NULL)
 		return (-1);
 
-	for (int i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
-		if (cmp(array[i]) != 0)
-		{
+		if (cmp(array[i]))
 			return (i);
-		}
-
 	}
 	return (-1);
-}
-
-/**
- * Compare function that checks if a number is even
- * Returns 1 if the number is even, 0 otherwise
- */
-
-int compare_even(int num)
-{
-	return (num % 2 == 0 ? 1 : 0);
-}
-
-/**
- * Compare function that checks if a number is negative
- * Returns 1 if the number is negative, 0 otherwise
- */
-
-int compare_negative(int num)
-{
-	return (num < 0 ? 1 : 0);
 }
