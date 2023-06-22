@@ -1,4 +1,6 @@
 #include "function_pointers.h"
+#include <stdio.h>
+
 /**
  * int_index - return index place if comparison = true, else -1
  * @array: array
@@ -6,17 +8,39 @@
  * @cmp: pointer to func of one of the 3 in main
  * Return: 0
  */
+
 int int_index(int *array, int size, int (*cmp)(int))
 {
-	int t;
-
-	if (array == NULL || size <= 0 || cmp == NULL)
+	if (size <= 0)
 		return (-1);
 
-	for (t = 0; t < size; t++)
+	for (int i = 0; i < size; i++)
 	{
-		if (cmp(array[t]))
-			return (t);
+		if (cmp(array[i]) != 0)
+		{
+			return (i);
+		}
+
 	}
 	return (-1);
+}
+
+/**
+ * Compare function that checks if a number is even
+ * Returns 1 if the number is even, 0 otherwise
+ */
+
+int compare_even(int num)
+{
+	return (num % 2 == 0 ? 1 : 0);
+}
+
+/**
+ * Compare function that checks if a number is negative
+ * Returns 1 if the number is negative, 0 otherwise
+ */
+
+int compare_negative(int num)
+{
+	return (num < 0 ? 1 : 0);
 }
